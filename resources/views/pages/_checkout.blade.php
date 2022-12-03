@@ -57,7 +57,7 @@
                                         <td class="align-middle">Active</td>
                                         <td class="align-middle">
                                             <a href="#">
-                                                <img src="{{ url('frontend/images/ic_remove.png') }}" alt="" />
+                                                <img src="{{ url('frontend/images/ic_remove.png') }}" alt=""/>
                                             </a>
                                         </td>
                                     </tr>
@@ -75,7 +75,7 @@
                                         <td class="align-middle">Active</td>
                                         <td class="align-middle">
                                             <a href="#">
-                                                <img src="{{ url('frontend/images/ic_remove.png') }}" alt="" />
+                                                <img src="{{ url('frontend/images/ic_remove.png') }}" alt=""/>
                                             </a>
                                         </td>
                                     </tr>
@@ -161,7 +161,7 @@
                                 </tr>
                             </table>
 
-                            <hr />
+                            <hr/>
                             <h2>Payment Instructions</h2>
                             <p class="payment-instructions">
                                 Please complete your payment before to continue the wonderful
@@ -178,7 +178,7 @@
                                         <h3>PT Nomads ID</h3>
                                         <p>
                                             0881 8829 8800
-                                            <br />
+                                            <br/>
                                             Bank Central Asia
                                         </p>
                                     </div>
@@ -194,7 +194,7 @@
                                         <h3>PT Nomads ID</h3>
                                         <p>
                                             0899 8501 7888
-                                            <br />
+                                            <br/>
                                             Bank HSBC
                                         </p>
                                     </div>
@@ -204,7 +204,7 @@
                         </div>
                         <div class="join-container">
                             <a
-                                href="success.html"
+                                href="{{ route('checkout-success') }}"
                                 class="btn btn-block btn-join-now mt-3 py-2"
                             >I Have Made Payment</a
                             >
@@ -220,13 +220,13 @@
 @endsection
 
 @push('prepend-style')
-    <link rel="stylesheet" href="{{url('frontend/libraries/gijgo/css/gijgo.min.css')}}" />
+    <link rel="stylesheet" href="{{url('frontend/libraries/gijgo/css/gijgo.min.css')}}"/>
 @endpush
 
 @push('addon-script')
     <script src="{{url('frontend/libraries/gijgo/js/gijgo.min.js')}}"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.datepicker').datepicker({
                 uiLibrary: 'bootstrap4',
                 icons: {
