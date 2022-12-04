@@ -9,9 +9,9 @@ return new class extends Migration {
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
-
-
-
+            $table->foreignId('travel_packages_id')->constrained('travel_packages');
+            $table->text('image');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
