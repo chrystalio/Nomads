@@ -20,7 +20,7 @@ Route::get('/detail', [DetailController::class, 'index'])->name('detail');
 
 Route::controller(CheckoutController::class)->group(function () {
     Route::get('/checkout', 'index')->name('checkout');
-    Route::get('/checkout/status', 'process')->name('checkout-success');
+    Route::get('/checkout/status', 'success')->name('checkout-success');
 });
 
 Route::prefix('admin')->namespace('Admin')->group(function(){
