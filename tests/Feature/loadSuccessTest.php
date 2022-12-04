@@ -21,7 +21,7 @@ class loadSuccessTest extends TestCase
 
     public function testCheckoutSuccessPageLoads()
     {
-        $response = $this->get('/checkout/success');
+        $response = $this->get('/checkout/status');
 
         $response->assertStatus(200);
         $response->assertSee('Checkout Success');
