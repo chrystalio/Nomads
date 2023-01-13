@@ -1,7 +1,7 @@
 <div class="container">
     <nav class="row navbar navbar-expand-lg navbar-light bg-white">
         <a class="navbar-brand" href="#">
-            <img src="{{url('frontend/images/logo@2x.png')}}" alt="Nomads Logo" />
+            <img src="{{url('frontend/images/logo@2x.png')}}" alt="Nomads Logo"/>
         </a>
         <button
             class="navbar-toggler navbar-toggler-right"
@@ -40,19 +40,27 @@
                     <a class="nav-link" href="#">Testimonials</a>
                 </li>
             </ul>
+            @if(auth()->user())
+                <form action="{{route('logout')}}" method="POST" class="d-sm-block d-md-block">
+                    @csrf
+                    <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4 d-none d-md-block">
+                        Keluar
+                    </button>
 
-            <!-- Mobile button -->
-            <form class="form-inline d-sm-block d-md-none">
-                <button class="btn btn-login my-2 my-sm-0">
+                    <button class="btn btn-login my-2 my-sm-0 d-sm-block d-md-none">
+                        Keluar
+                    </button>
+                </form>
+            @else
+                <a href="/login" class="text-light text-decoration-none d-none d-lg-block">
+                    <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4">
+                        Masuk
+                    </button>
+                </a>
+                <button class="btn btn-login my-2 my-sm-0 d-sm-block d-md-none">
                     <a href="/login" class="text-light text-decoration-none">Masuk</a>
                 </button>
-            </form>
-            <!-- Desktop Button -->
-            <form class="form-inline my-2 my-lg-0 d-none d-md-block">
-                <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4">
-                    <a href="/login" class="text-light text-decoration-none">Masuk</a>
-                </button>
-            </form>
+            @endif
         </div>
     </nav>
 </div>
