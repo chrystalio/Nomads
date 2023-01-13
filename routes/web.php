@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/detail', [DetailController::class, 'index'])->name('detail');
 
@@ -23,7 +24,11 @@ Route::controller(CheckoutController::class)->group(function () {
     Route::get('/checkout/status', 'success')->name('checkout-success');
 });
 
-Route::prefix('admin')->namespace('Admin')->group(function(){
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->middleware('isAdmin')
+        ->name('dashboard');
 });
 
+
+Auth::routes();
