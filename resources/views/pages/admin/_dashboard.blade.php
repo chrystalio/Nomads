@@ -17,8 +17,8 @@
                                 <img src="{{url('backend/assets/images/faces/2.jpg')}}" alt="Face 1">
                             </div>
                             <div class="ms-3 name">
-                                <h5 class="font-bold">Kristoff</h5>
-                                <h6 class="text-muted mb-0 fs-6">System Administrator</h6>
+                                <h5 class="font-bold">{{auth()->user()->name}}</h5>
+                                <h6 class="text-muted mb-0 fs-6">{{auth()->user()->roles}}</h6>
                             </div>
                         </div>
                     </div>
