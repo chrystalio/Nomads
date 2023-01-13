@@ -4,7 +4,7 @@
         <h3>Nomads Dashboard</h3>
         <form action="{{route('logout')}}" method="post">
             @csrf
-            <button class="btn btn-outline-danger btn-sm d-flex justify-content-end" type="submit">Logout</button>
+            <button class="btn btn-outline-danger shadow-md btn-sm d-flex justify-content-end" type="submit">Logout</button>
         </form>
     </div>
     <div class="page-content">
