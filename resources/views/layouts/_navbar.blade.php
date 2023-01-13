@@ -44,13 +44,13 @@
             <!-- Mobile button -->
             <form class="form-inline d-sm-block d-md-none">
                 <button class="btn btn-login my-2 my-sm-0">
-                    Masuk
+                    <a href="/login" class="text-light text-decoration-none">Masuk</a>
                 </button>
             </form>
             <!-- Desktop Button -->
             <form class="form-inline my-2 my-lg-0 d-none d-md-block">
                 <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4">
-                    Masuk
+                    <a href="/login" class="text-light text-decoration-none">Masuk</a>
                 </button>
             </form>
         </div>
