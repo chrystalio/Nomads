@@ -41,7 +41,7 @@ class LoginController extends Controller
 
     public function authenticated(Request $request, $user)
     {
-        if ($user->roles === 'ADMIN') {
+        if ($user->roles === 'System Administrator') {
             return redirect()->route('dashboard');
         }
         return redirect()->route('home');
