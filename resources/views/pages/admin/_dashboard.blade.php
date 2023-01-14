@@ -1,4 +1,5 @@
 @extends('layouts._admin')
+@section('title', 'Nomads Dashboard')
 @section('content')
     <div class="page-heading d-flex justify-content-between">
         <h3>Nomads Dashboard</h3>
