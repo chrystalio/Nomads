@@ -90,7 +90,7 @@
                                         type="text"
                                         class="form-control mb-2 mr-sm-2"
                                         id="inputUsername"
-                                        placeholder="Username"
+                                        placeholder="Username" value="{{auth()->user()->username}}"
                                     />
 
                                     <label
