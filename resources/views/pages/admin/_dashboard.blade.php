@@ -9,8 +9,14 @@
         </form>
     </div>
     <div class="page-content">
+
         <section class="row">
             <div class="col-12 col-lg-12">
+                @if(auth()->user()->email_verified_at === null)
+                    <div class="alert alert-light-danger color-danger alert-dismissible">
+                        <i class="bi bi-exclamation-circle"></i> Your account has not been verified. Please check your email for verification instructions.
+                    </div>
+                @endif
                 <div class="card d-sm-block hidden">
                     <div class="card-body py-4 px-4">
                         <div class="d-flex align-items-center">
