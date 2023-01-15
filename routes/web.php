@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\TravelPackageController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\HomeController;
@@ -24,10 +25,12 @@ Route::controller(CheckoutController::class)->group(function () {
     Route::get('/checkout/status', 'success')->name('checkout-success');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
-        ->middleware('isAdmin')
         ->name('dashboard');
+
+    Route::get('/dashboard/travel-package', [TravelPackageController::class, 'index'])
+        ->name('travel-package');
 });
 
 
