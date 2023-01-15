@@ -9,7 +9,7 @@ class TravelPackageController extends Controller
 {
     public function index()
     {
-
+        return view('pages.admin.travel-package._index');
     }
 
     public function create()
