@@ -28,9 +28,10 @@ Route::controller(CheckoutController::class)->group(function () {
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
+});
 
-    Route::get('/dashboard/travel-package', [TravelPackageController::class, 'index'])
-        ->name('travel-package');
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'isAdmin']], static function () {
+    Route::resource('travel-package', TravelPackageController::class);
 });
 
 
