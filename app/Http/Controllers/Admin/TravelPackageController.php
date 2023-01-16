@@ -3,13 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\TravelPackage;
 use Illuminate\Http\Request;
 
 class TravelPackageController extends Controller
 {
     public function index()
     {
-        return view('pages.admin.travel-package._index');
+        $items = TravelPackage::all();
+
+        return view('pages.admin.travel-package._index', [
+            'items' => $items,
+        ]);
     }
 
     public function create()
