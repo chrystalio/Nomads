@@ -4,7 +4,7 @@
     <div class="page-heading d-flex justify-content-between">
         <h3>Nomads Dashboard</h3>
     </div>
-    <div class="page-content vh-100">
+    <div class="page-content">
         <h4></h4>
         <div class="row my-3">
             <div class="col-12">
