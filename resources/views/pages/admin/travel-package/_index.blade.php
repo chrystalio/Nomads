@@ -38,7 +38,7 @@
                                         <td>{{$item->duration}}</td>
                                         <td>{{$item->price}}</td>
                                         <td>
-                                            <a href="{{route('travel-package.edit', $item->id)}}" class="btn btn-sm btn-outline-primary">Edit</a>
+                                            <a href="{{route('travel-package.edit', $item->id)}}" class="btn btn-sm btn-outline-warning">Edit</a>
                                             <form action="{{route('travel-package.destroy', $item->id)}}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
