@@ -43,6 +43,19 @@
                                                                 <input type="text" id="location" class="form-control" placeholder="Location" name="location" value="{{old('location')}}">
                                                             </div>
                                                         </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="about">About</label>
+                                                                <textarea class="form-control" placeholder="About"
+                                                                    id="about" data-value="{{old('about')}}"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="departure_date">Departure Date</label>
+                                                                <input type="date" id="departure_date" class="form-control" placeholder="Departure Date" name="departure_date" value="{{old('departure-date')}}">
+                                                            </div>
+                                                        </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="type">Type</label>
@@ -51,8 +64,14 @@
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
-                                                                <label for="departure_date">Departure Date</label>
-                                                                <input type="date" id="departure_date" class="form-control" placeholder="Departure Date" name="departure_date" value="{{old('depature-date')}}">
+                                                                <label for="language">Language</label>
+                                                                <input type="text" id="language" class="form-control" placeholder="Language" name="language" value="{{old('language')}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-group">
+                                                                <label for="foods">Foods</label>
+                                                                <input type="text" id="foods" class="form-control" placeholder="Foods" name="foods" value="{{old('foods')}}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
@@ -63,8 +82,14 @@
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
+                                                                <label for="featured_event">Featured Events</label>
+                                                                <input type="text" id="featured_event" class="form-control" placeholder="Featured Event" name="featured_event" value="{{old('featured_event')}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-group">
                                                                 <label for="price">Price</label>
-                                                                <input type="text" id="price" class="form-control" placeholder="Price" name="price" value="{{old('price')}}">
+                                                                <input type="text" id="price" class="form-control" placeholder="Rp." name="price" value="{{old('price')}}">
                                                             </div>
                                                         </div>
                                                         <div class="col-12 my-2 d-flex justify-content-end">
