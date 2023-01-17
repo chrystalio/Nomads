@@ -47,7 +47,7 @@
                                                             <div class="form-group">
                                                                 <label for="about">About</label>
                                                                 <textarea class="form-control" placeholder="About"
-                                                                    id="about" data-value="{{old('about')}}"></textarea>
+                                                                    id="about">{{old('about')}}</textarea>
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
@@ -89,7 +89,7 @@
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="price">Price</label>
-                                                                <input type="text" id="price" class="form-control" placeholder="Rp." name="price" value="{{old('price')}}">
+                                                                <input type="number" id="price" class="form-control" placeholder="Rp." name="price" value="{{old('price')}}">
                                                             </div>
                                                         </div>
                                                         <div class="col-12 my-2 d-flex justify-content-end">
