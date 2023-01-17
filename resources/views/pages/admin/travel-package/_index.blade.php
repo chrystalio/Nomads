@@ -6,6 +6,13 @@
     </div>
     <div class="page-content">
         <h4>Travel Packages</h4>
+        @foreach (Alert::getMessages() as $type => $messages)
+            @foreach ($messages as $message)
+                <div class="alert alert-{{ $type }} alert-dismissible fade show" role="alert">
+                    {{ $message }}
+                </div>
+            @endforeach
+        @endforeach
         <div class="row my-3">
             <div class="col-12">
                 <div class="card">
@@ -14,7 +21,7 @@
                             <a href="{{route('travel-package.create')}}" class="btn btn-primary btn-sm shadow-md">Add New</a>
                         </div>
                         <div class="table-responsive">
-                            <table class="table table-hover table-bordered">
+                            <table class="table table-hover table-bordered" id="table1">
                                 <thead class="text-center">
                                 <tr>
                                     <th scope="col">#</th>
