@@ -68,7 +68,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-12 my-2 d-flex justify-content-end">
-                                                            <button type="submit" class="btn btn-primary me-1 mb-1">
+                                                            <button type="submit" class="btn btn-primary me-3 mb-1">
                                                                 Submit
                                                             </button>
                                                             <button type="reset" class="btn btn-light-secondary me-1 mb-1">
