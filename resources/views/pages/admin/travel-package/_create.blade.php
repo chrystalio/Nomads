@@ -46,8 +46,7 @@
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <label for="about">About</label>
-                                                                <textarea class="form-control" placeholder="About"
-                                                                    id="about">{{old('about')}}</textarea>
+                                                                <textarea name="about" id="about" rows="3" class="form-control">{{old('about')}}</textarea>
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
