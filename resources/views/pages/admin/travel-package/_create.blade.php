@@ -19,6 +19,15 @@
                                         </div>
                                         <div class="card-content">
                                             <div class="card-body">
+                                                @if($errors->any())
+                                                    <div class="alert alert-danger">
+                                                        <ul>
+                                                            @foreach($errors->all() as $error)
+                                                                <li>{{$error}}</li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                @endif
                                                 <form action="{{route('travel-package.store')}}" method="post" enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="row">
