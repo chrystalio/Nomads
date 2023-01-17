@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\TravelPackage;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\TravelPackageRequest;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Prologue\Alerts\Facades\Alert;
 
 class TravelPackageController extends Controller
 {
@@ -22,8 +26,27 @@ class TravelPackageController extends Controller
         return view('pages.admin.travel-package._create');
     }
 
-    public function store(Request $request)
+    public function store(TravelPackageRequest $request): \Illuminate\Http\RedirectResponse
     {
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->title);
+
+        DB::beginTransaction();
+        try {
+            TravelPackage::create($data);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors($e->getMessage())->withInput($request->all());
+        }
+        DB::commit();
+
+        // Add alert message here using Prologue Alerts
+        Alert::success('Travel Package has been created successfully')->flash();
+
+        return redirect()->route('travel-package.index');
+
+
+
     }
 
     public function show($id)
