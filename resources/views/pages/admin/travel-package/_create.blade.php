@@ -34,37 +34,37 @@
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="title">Title</label>
-                                                                <input type="text" id="title" class="form-control" placeholder="Title" name="title">
+                                                                <input type="text" id="title" class="form-control" placeholder="Title" name="title" value="{{old('title')}}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="location">Location</label>
-                                                                <input type="text" id="location" class="form-control" placeholder="Location" name="location">
+                                                                <input type="text" id="location" class="form-control" placeholder="Location" name="location" value="{{old('location')}}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="type">Type</label>
-                                                                <input type="text" id="type" class="form-control" placeholder="Type" name="type">
+                                                                <input type="text" id="type" class="form-control" placeholder="Type" name="type" value="{{old('type')}}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="departure_date">Departure Date</label>
-                                                                <input type="date" id="departure_date" class="form-control" placeholder="Departure Date" name="departure_date">
+                                                                <input type="date" id="departure_date" class="form-control" placeholder="Departure Date" name="departure_date" value="{{old('depature-date')}}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="duration">Duration</label>
-                                                                <input type="text" id="duration" class="form-control" placeholder="Duration" name="duration">
+                                                                <input type="text" id="duration" class="form-control" placeholder="Duration" name="duration" value="{{old('duration')}}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="price">Price</label>
-                                                                <input type="text" id="price" class="form-control" placeholder="Price" name="price">
+                                                                <input type="text" id="price" class="form-control" placeholder="Price" name="price" value="{{old('price')}}">
                                                             </div>
                                                         </div>
                                                         <div class="col-12 my-2 d-flex justify-content-end">
