@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\TravelPackage;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\TravelPackageRequest;
+use App\Http\Requests\Admin\GalleryRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Prologue\Alerts\Facades\Alert;
@@ -14,26 +14,25 @@ class GalleryController extends Controller
 {
     public function index()
     {
-        $items = TravelPackage::all();
+        $items = Gallery::with('travel_package')->get();
 
-        return view('pages.admin.travel-package._index', [
+        return view('pages.admin.gallery._index', [
             'items' => $items,
         ]);
     }
 
     public function create()
     {
-        return view('pages.admin.travel-package._create');
+        return view('pages.admin.gallery._create');
     }
 
-    public function store(TravelPackageRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(GalleryRequest $request): \Illuminate\Http\RedirectResponse
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->title);
 
         DB::beginTransaction();
         try {
-            TravelPackage::create($data);
+            Gallery::create($data);
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->withErrors($e->getMessage())->withInput($request->all());
@@ -41,12 +40,9 @@ class GalleryController extends Controller
         DB::commit();
 
         // Add alert message here using Prologue Alerts
-        Alert::success('Travel Package has been created successfully')->flash();
+        Alert::success('Image has been created successfully')->flash();
 
-        return redirect()->route('travel-package.index');
-
-
-
+        return redirect()->route('gallery.index');
     }
 
     public function show($id)
@@ -55,19 +51,17 @@ class GalleryController extends Controller
 
     public function edit($id)
     {
-        $item = TravelPackage::findOrFail($id);
+        $item = Gallery::findOrFail($id);
 
-        return view('pages.admin.travel-package._edit', [
+        return view('pages.admin.gallery._edit', [
             'item' => $item,
         ]);
     }
 
-    public function update(TravelPackageRequest $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(GalleryRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->title);
-
-        $item = TravelPackage::findOrFail($id);
+        $item = Gallery::findOrFail($id);
 
         DB::beginTransaction();
         try {
@@ -79,14 +73,14 @@ class GalleryController extends Controller
         DB::commit();
 
         // Add alert message here using Prologue Alerts
-        Alert::success('Travel Package has been updated successfully')->flash();
+        Alert::success('Image has been updated successfully')->flash();
 
-        return redirect()->route('travel-package.index');
+        return redirect()->route('gallery.index');
     }
 
     public function destroy($id)
     {
-        $item = TravelPackage::findOrFail($id);
+        $item = Gallery::findOrFail($id);
 
         DB::beginTransaction();
         try {
@@ -98,8 +92,8 @@ class GalleryController extends Controller
         DB::commit();
 
         // Add alert message here using Prologue Alerts
-        Alert::success('Travel Package has been deleted successfully')->flash();
+        Alert::success('Image has been deleted successfully')->flash();
 
-        return redirect()->route('travel-package.index');
+        return redirect()->route('gallery.index');
     }
 }
