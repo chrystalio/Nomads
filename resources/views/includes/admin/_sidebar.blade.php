@@ -40,7 +40,7 @@
 
                 <li
                     class="sidebar-item">
-                    <a href="#" class='sidebar-link'>
+                    <a href="{{route('gallery.index')}}" class='sidebar-link'>
                         <i class="bi bi-card-image"></i>
                         <span>Gallery Travel</span>
                     </a>
