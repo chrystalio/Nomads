@@ -24,7 +24,7 @@
                             <table class="table table-hover table-bordered" id="table1">
                                 <thead class="text-center">
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">No</th>
                                     <th scope="col">Title</th>
                                     <th scope="col">Location</th>
                                     <th scope="col">Type</th>
@@ -37,18 +37,18 @@
                                 <tbody class="table-hover text-center">
                                 @forelse($items as $item)
                                     <tr>
-                                        <th scope="row" class="text-center">{{$loop->iteration}}</th>
+                                        <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{$item->title}}</td>
                                         <td>{{$item->location}}</td>
                                         <td>{{$item->type}}</td>
                                         <td>{{$item->departure_date}}</td>
                                         <td>{{$item->duration}}</td>
-                                        <td>{{$item->price}}</td>
+                                        <td>Rp{{number_format($item->price)}}</td>
                                         <td>
                                             <a href="{{route('travel-package.edit', $item->id)}}" class="btn btn-sm btn-outline-warning">Edit</a>
                                             <form action="{{route('travel-package.destroy', $item->id)}}" method="post" class="d-inline">
                                                 @csrf
-                                                @method('delete')
+                                                @method('DELETE')
                                                 <button class="btn btn-sm btn-outline-danger">Delete</button>
                                             </form>
                                         </td>
