@@ -55,10 +55,33 @@ class TravelPackageController extends Controller
 
     public function edit($id)
     {
+        $item = TravelPackage::findOrFail($id);
+
+        return view('pages.admin.travel-package._edit', [
+            'item' => $item,
+        ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(TravelPackageRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->title);
+
+        $item = TravelPackage::findOrFail($id);
+
+        DB::beginTransaction();
+        try {
+            $item->update($data);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors($e->getMessage())->withInput($request->all());
+        }
+        DB::commit();
+
+        // Add alert message here using Prologue Alerts
+        Alert::success('Travel Package has been updated successfully')->flash();
+
+        return redirect()->route('travel-package.index');
     }
 
     public function destroy($id)
