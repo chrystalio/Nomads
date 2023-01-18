@@ -86,5 +86,20 @@ class TravelPackageController extends Controller
 
     public function destroy($id)
     {
+        $item = TravelPackage::findOrFail($id);
+
+        DB::beginTransaction();
+        try {
+            $item->delete();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors($e->getMessage());
+        }
+        DB::commit();
+
+        // Add alert message here using Prologue Alerts
+        Alert::success('Travel Package has been deleted successfully')->flash();
+
+        return redirect()->route('travel-package.index');
     }
 }
