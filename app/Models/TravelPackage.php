@@ -31,4 +31,9 @@ class TravelPackage extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function galleries()
+    {
+        return $this->hasMany(Gallery::class, 'travel_packages_id', 'id');
+    }
 }
