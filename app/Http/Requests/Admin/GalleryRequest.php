@@ -9,8 +9,8 @@ class GalleryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'travel_packages_id' => 'required|integer|exists:travel_packages,id|unique:galleries,travel_packages_id',
-            'image' => 'required|image',
+            'travel_packages_id' => 'required|integer|exists:travel_packages,id|exists:travel_packages,id',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048|sometimes',
         ];
     }
 
