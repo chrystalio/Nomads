@@ -10,12 +10,11 @@ class TransactionDetail extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'uuid',
-        'travel_packages_id',
-        'users_id',
-        'additional_visa',
-        'transaction_total',
-        'transaction_status',
+        'transactions_id',
+        'username',
+        'nationality',
+        'is_visa',
+        'doe_passport',
     ];
 
     protected $hidden = [
@@ -24,18 +23,9 @@ class TransactionDetail extends Model
         'deleted_at',
     ];
 
-    public function details()
-    {
-        return $this->hasMany(TransactionDetail::class, 'transactions_id', 'id');
-    }
 
-    public function travel_package()
+    public function transaction()
     {
-        return $this->belongsTo(TravelPackage::class, 'travel_packages_id', 'id');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'users_id', 'id');
+        return $this->belongsTo(Transaction::class, 'travel_packages_id', 'id');
     }
 }
