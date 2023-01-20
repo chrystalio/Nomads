@@ -101,6 +101,7 @@ class GalleryController extends Controller
 
         DB::beginTransaction();
         try {
+            \Storage::disk('public')->delete($item->image);
             $item->delete();
         } catch (\Exception $e) {
             DB::rollBack();
