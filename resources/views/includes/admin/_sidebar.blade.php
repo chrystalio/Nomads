@@ -47,7 +47,7 @@
                 </li>
                 <li
                     class="sidebar-item">
-                    <a href="#" class='sidebar-link'>
+                    <a href="{{route('transaction.index')}}" class='sidebar-link'>
                         <i class="bi bi-cart-check-fill"></i>
                         <span>Transactions</span>
                     </a>
