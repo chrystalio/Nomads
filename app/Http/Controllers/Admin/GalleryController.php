@@ -72,6 +72,14 @@ class GalleryController extends Controller
         $data = $request->all();
         $item = Gallery::findOrFail($id);
 
+        if ($request->has('image')) {
+            // Unlink old image
+            \Storage::disk('public')->delete($item->image);
+            $data['image'] = $request->file('image')->store(
+                'assets/gallery', 'public'
+            );
+        }
+
         DB::beginTransaction();
         try {
             $item->update($data);
