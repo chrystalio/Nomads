@@ -16,6 +16,7 @@
                                     <div class="card">
                                         <div class="card-header">
                                             <h4 class="card-title">Edit Image - {{$item->travel_package->title}}</h4>
+                                            <a href="{{route('gallery.index')}}" class="btn btn-primary btn-sm float-right">Back to Gallery</a>
                                         </div>
                                         <div class="card-content">
                                             <div class="card-body">
