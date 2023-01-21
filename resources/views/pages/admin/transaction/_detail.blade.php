@@ -53,11 +53,13 @@
                                                                 <tr>
                                                                     <th>Name</th>
                                                                     <th>Nationality</th>
+                                                                    <th>Visa</th>
                                                                     <th>DOE Passport</th>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>{{$item->user->name}}</td>
                                                                     <td>{{$item->details->first()->nationality}}</td>
+                                                                    <td>{{$item->details->first()->is_visa ? '30 Days' : 'N/A'}}</td>
                                                                     <td>{{$item->details->first()->doe_passport}}</td>
                                                                 </tr>
                                                             </table>
