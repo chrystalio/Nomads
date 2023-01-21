@@ -1,15 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\transaction;
+use App\Http\Controllers\Controller;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
     public function index()
     {
-        return view('pages.admin.transaction._index');
+        $items = Transaction::with(['details', 'travel_package', 'user'])->get();
+
+        return view('pages.admin.transaction._index',[
+            'items' => $items,
+        ]);
     }
 
     public function create()
@@ -20,8 +25,13 @@ class TransactionController extends Controller
     {
     }
 
-    public function show(transaction $transactions)
+    public function show($id)
     {
+        $item = Transaction::with(['details', 'travel_package', 'user'])->findOrFail($id);
+
+        return view('pages.admin.transaction._detail',[
+            'item' => $item,
+        ]);
     }
 
     public function edit(transaction $transactions)
