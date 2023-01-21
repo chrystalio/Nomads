@@ -15,7 +15,7 @@
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h4 class="card-title">Edit Travel Packages {{$item->title}}</h4>
+                                            <h4 class="card-title">Update Transaction Status</h4>
                                         </div>
                                         <div class="card-content">
                                             <div class="card-body">
@@ -34,7 +34,7 @@
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <div class="form-group">
-                                                                <label for="transaction_status">status</label>
+                                                                <label for="transaction_status">Status</label>
                                                                 <select name="transaction_status" id="transaction_status" class="form-control">
                                                                     <option value="{{$item->transaction_status}}">{{$item->transaction_status}}</option>
                                                                     <option value="SUCCESS">SUCCESS</option>
@@ -45,8 +45,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-12 my-2 d-flex justify-content-end">
-                                                            <button type="submit" class="btn btn-primary me-3 mb-1">
-                                                                Edit
+                                                            <button type="submit" class="btn btn-primary me-2 mb-1">
+                                                                Update Status
                                                             </button>
                                                             <button type="reset" class="btn btn-light-secondary me-1 mb-1">
                                                                 Reset
