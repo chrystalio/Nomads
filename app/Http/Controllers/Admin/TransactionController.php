@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Alert;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TransactionRequest;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -45,7 +46,7 @@ class TransactionController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(TransactionRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
         $data = $request->all();
 
@@ -66,7 +67,22 @@ class TransactionController extends Controller
         return redirect()->route('transaction.index');
     }
 
-    public function destroy(transaction $transactions)
+    public function destroy($id)
     {
+        $item = Transaction::findOrFail($id);
+
+        DB::beginTransaction();
+        try {
+            $item->delete();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors($e->getMessage());
+        }
+        DB::commit();
+
+        // Add alert message here using Prologue Alerts
+        Alert::success('Transaction has been deleted successfully')->flash();
+
+        return redirect()->route('transaction.index');
     }
 }
