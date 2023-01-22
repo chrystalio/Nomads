@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/detail', [DetailController::class, 'index'])->name('detail');
+Route::get('/detail/{slug}', [DetailController::class, 'index'])->name('detail');
 
 Route::controller(CheckoutController::class)->group(function () {
     Route::get('/checkout', 'index')->name('checkout');
