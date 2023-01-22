@@ -21,110 +21,65 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8 pl-lg-0">
-                        <div class="card card-details">
-                            <h1>Nusa Peninda</h1>
-                            <p>
-                                Republic of Indonesia Raya
-                            </p>
-                            <div class="gallery">
-                                <div class="xzoom-container">
-                                    <img
-                                        class="xzoom"
-                                        id="xzoom-default"
-                                        src="{{url('frontend/images/details-1@2x.jpg')}}"
-                                        xoriginal="{{url('frontend/images/details-1@2x.jpg')}}"
-                                    />
-                                    <div class="xzoom-thumbs">
-                                        <a href={{url('frontend/images/details-1@2x.jpg')}}
-                                        ><img
-                                                class="xzoom-gallery"
-                                                width="128"
-                                                src={{url('frontend/images/details-1@2x.jpg')}}
-                                                xpreview={{url('frontend/images/details-1@2x.jpg')}}
-                                            /></a>
-                                        <a href={{url('frontend/images/details-1@2x.jpg')}}
-                                        ><img
-                                                class="xzoom-gallery"
-                                                width="128"
-                                                src={{url('frontend/images/details-1@2x.jpg')}}
-                                                xpreview={{url('frontend/images/details-1@2x.jpg')}}
-                                            /></a>
-                                        <a href={{url('frontend/images/details-1@2x.jpg')}}
-                                        ><img
-                                                class="xzoom-gallery"
-                                                width="128"
-                                                src={{url('frontend/images/details-1@2x.jpg')}}
-                                                xpreview={{url('frontend/images/details-1@2x.jpg')}}
-                                            /></a>
-                                        <a href={{url('frontend/images/details-1@2x.jpg')}}
-                                        ><img
-                                                class="xzoom-gallery"
-                                                width="128"
-                                                src={{url('frontend/images/details-1@2x.jpg')}}
-                                                xpreview={{url('frontend/images/details-1@2x.jpg')}}
-                                            /></a>
-                                        <a href={{url('frontend/images/details-1@2x.jpg')}}
-                                        ><img
-                                                class="xzoom-gallery"
-                                                width="128"
-                                                src={{url('frontend/images/details-1@2x.jpg')}}
-                                                xpreview={{url('frontend/images/details-1@2x.jpg')}}
-                                            /></a>
-                                    </div>
-                                </div>
-                                <h2>Tentang Wisata</h2>
-                                <p>
-                                    Nusa Penida is an island southeast of Indonesia’s island
-                                    Bali and a district of Klungkung Regency that includes the
-                                    neighbouring small island of Nusa Lembongan. The Badung
-                                    Strait separates the island and Bali. The interior of Nusa
-                                    Penida is hilly with a maximum altitude of 524 metres. It is
-                                    drier than the nearby island of Bali.
-                                </p>
-                                <p>
-                                    Bali and a district of Klungkung Regency that includes the
-                                    neighbouring small island of Nusa Lembongan. The Badung
-                                    Strait separates the island and Bali.
-                                </p>
-                                <div class="features row pt-3">
-                                    <div class="col-md-4">
-                                        <img
-                                            src="{{url('frontend/images/ic_event@2x.png')}}"
-                                            alt=""
-                                            class="features-image"
-                                        />
-                                        <div class="description">
-                                            <h3>Featured Ticket</h3>
-                                            <p>Tari Kecak</p>
+                    @foreach($items as $item)
+                        <div class="col-lg-8 pl-lg-0">
+                            <div class="card card-details">
+                                <h1>{{$item->title}}</h1>
+                                <p>{{$item->location}}</p>
+                                <div class="gallery">
+                                    <div class="xzoom-container">
+                                        <img class="xzoom" id="xzoom-default" width="128" src="{{ Storage::url($item->galleries->first()->image) }}" xoriginal="{{ Storage::url($item->galleries->first()->image) }}"/>
+                                        <div class="xzoom-thumbs">
+                                            @foreach($item->galleries as $gallery)
+                                                <a href="{{ Storage::url($gallery->image) }}">
+                                                    <img class="xzoom-gallery" width="128" src="{{ Storage::url($gallery->image) }}" xpreview="{{ Storage::url($gallery->image) }}"/>
+                                                </a>
+                                            @endforeach
                                         </div>
                                     </div>
-                                    <div class="col-md-4 border-left">
-                                        <img
-                                            src="{{url('frontend/images/ic_bahasa@2x.png')}}"
-                                            alt=""
-                                            class="features-image"
-                                        />
-                                        <div class="description">
-                                            <h3>Language</h3>
-                                            <p>Bahasa Indonesia</p>
+                                    <h2>About Destination</h2>
+                                    <p>{{$item->about}}</p>
+                                    <div class="features row pt-3">
+                                        <div class="col-md-4">
+                                            <img src="{{url('frontend/images/ic_event@2x.png')}}" alt="" class="features-image"/>
+                                            <div class="description">
+                                                <h3>Featured Event</h3>
+                                                <p>
+                                                    {{$item->featured_event}}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4 border-left">
-                                        <img
-                                            src="{{url('frontend/images/ic_foods@2x.png')}}"
-                                            alt=""
-                                            class="features-image"
-                                        />
-                                        <div class="description">
-                                            <h3>Foods</h3>
-                                            <p>Local Foods</p>
+                                        <div class="col-md-4 border-left">
+                                            <img
+                                                src="{{url('frontend/images/ic_bahasa@2x.png')}}"
+                                                alt=""
+                                                class="features-image"
+                                            />
+                                            <div class="description">
+                                                <h3>Language</h3>
+                                                <p>
+                                                    {{$item->language}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 border-left">
+                                            <img
+                                                src="{{url('frontend/images/ic_foods@2x.png')}}"
+                                                alt=""
+                                                class="features-image"
+                                            />
+                                            <div class="description">
+                                                <h3>Foods</h3>
+                                                <p>
+                                                    {{$item->foods}}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                     <div class="col-lg-4">
                         <div class="card card-details card-right">
                             <h2>Members are going</h2>
