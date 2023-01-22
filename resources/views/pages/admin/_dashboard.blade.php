@@ -41,8 +41,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                        <h6 class="text-muted font-bold">Packages</h6>
-                                        <h6 class="font-extrabold mb-0">5</h6>
+                                        <h6 class="text-muted font-bold">Travel Packages</h6>
+                                        <h6 class="font-extrabold mb-0">{{$travelPackagesCount}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-bold">Transactions</h6>
-                                        <h6 class="font-extrabold mb-0">183.000</h6>
+                                        <h6 class="font-extrabold mb-0">{{$transactionsCount}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-bold">Pending</h6>
-                                        <h6 class="font-extrabold mb-0">10</h6>
+                                        <h6 class="font-extrabold mb-0">{{$pendingTransactionsCount}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-bold">Success</h6>
-                                        <h6 class="font-extrabold mb-0">130</h6>
+                                        <h6 class="font-extrabold mb-0">{{$successTransactionsCount}}</h6>
                                     </div>
                                 </div>
                             </div>
