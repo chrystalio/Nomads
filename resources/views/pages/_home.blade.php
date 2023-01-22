@@ -64,7 +64,7 @@
                                     {{$item->title}}
                                 </div>
                                 <div class="travel-button mt-auto">
-                                    <a href="{{route('detail')}}" class="btn btn-travel-details px-4">
+                                    <a href="{{route('detail', $item->slug)}}" class="btn btn-travel-details px-4">
                                         View Details
                                     </a>
                                 </div>
