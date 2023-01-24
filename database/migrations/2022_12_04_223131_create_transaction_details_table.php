@@ -10,7 +10,6 @@ return new class extends Migration {
         Schema::create('transaction_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('transactions_id')->constrained('transactions');
-            $table->foreignId('users_id')->constrained('users');
             $table->string('username');
             $table->string('nationality');
             $table->boolean('is_visa');

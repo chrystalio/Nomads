@@ -21,11 +21,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/detail', [DetailController::class, 'index'])->name('detail');
+Route::get('/detail/{slug}', [DetailController::class, 'index'])->name('detail');
 
 Route::controller(CheckoutController::class)->group(function () {
-    Route::get('/checkout', 'index')->name('checkout');
-    Route::get('/checkout/status', 'success')->name('checkout-success');
+    Route::post('/checkout/{id}', [CheckoutController::class, 'process'])
+        ->name('checkout-process')
+        ->middleware(['auth', 'verified']);
+    Route::get('/checkout/{id}', [CheckoutController::class, 'index'])
+        ->name('checkout')
+        ->middleware(['auth', 'verified']);
+    Route::get('/checkout/remove/{detail_id}', [CheckoutController::class, 'remove'])
+        ->name('checkout-remove')
+        ->middleware(['auth', 'verified']);
+    Route::post('/checkout/create/{detail_id}', [CheckoutController::class, 'create'])
+        ->name('checkout-create')
+        ->middleware(['auth', 'verified']);
+    Route::get('/checkout/confirm/{id}', [CheckoutController::class, 'success'])
+        ->name('checkout-success')
+        ->middleware(['auth', 'verified']);
 });
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
