@@ -33,7 +33,7 @@ Route::controller(CheckoutController::class)->group(function () {
     Route::get('/checkout/remove/{detail_id}', [CheckoutController::class, 'remove'])
         ->name('checkout-remove')
         ->middleware(['auth', 'verified']);
-    Route::get('/checkout/create/{detail_id}', [CheckoutController::class, 'create'])
+    Route::post('/checkout/create/{detail_id}', [CheckoutController::class, 'create'])
         ->name('checkout-create')
         ->middleware(['auth', 'verified']);
     Route::get('/checkout/confirm/{id}', [CheckoutController::class, 'success'])
