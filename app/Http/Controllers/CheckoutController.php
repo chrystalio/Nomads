@@ -38,7 +38,7 @@ class CheckoutController extends Controller
             'username' => Auth::user()->username,
             'nationality' => 'Indonesia',
             'is_visa' => false,
-            'doe_passport' => Carbon::now()->addYears(5),
+            'doe_passport' => Carbon::create($transaction->user->doe_passport)->format('Y-m-d'),
         ]);
         $transaction->save();
 
