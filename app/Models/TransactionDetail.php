@@ -11,7 +11,6 @@ class TransactionDetail extends Model
 
     protected $fillable = [
         'transactions_id',
-        'users_id',
         'username',
         'nationality',
         'is_visa',
