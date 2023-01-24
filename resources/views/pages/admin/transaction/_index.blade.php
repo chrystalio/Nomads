@@ -50,7 +50,7 @@
                                                 Show
                                             </a>
                                             <a href="{{ route('transaction.edit', $item->id) }}" class="btn-sm btn btn-warning">
-                                                Edit
+                                                Update Status
                                             </a>
                                             <form action="{{ route('transaction.destroy', $item->id) }}" method="post" class="d-inline">
                                                 @csrf
