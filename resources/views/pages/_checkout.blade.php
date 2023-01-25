@@ -169,8 +169,7 @@
                                 <tr>
                                     <th width="50%">Total (+Unique)</th>
                                     <td width="50%" class="text-right text-total">
-                                        <span class="text-blue">Rp {{number_format($item->transaction_total)}},</span>
-                                        <span class="text-orange">{{random_int(1, 99)}}</span>
+                                        <span class="text-blue">Rp {{number_format($item->transaction_total + random_int(1, 99))}}
                                     </td>
                                 </tr>
                             </table>
