@@ -58,7 +58,10 @@
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="type">Type</label>
-                                                                <input type="text" id="type" class="form-control" placeholder="Type" name="type" value="{{old('type')}}">
+                                                                <select name="type" id="type" class="form-control">
+                                                                    <option value="Open Trip">Open Trip</option>
+                                                                    <option value="Private Trip">Private Trip</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
