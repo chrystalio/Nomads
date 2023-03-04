@@ -49,9 +49,12 @@
                                             <a href="{{ route('transaction.show', $item->id) }}" class="btn-sm btn btn-primary">
                                                 Show
                                             </a>
-                                            <a href="{{ route('transaction.edit', $item->id) }}" class="btn-sm btn btn-warning">
-                                                Update Status
-                                            </a>
+                                            @if($item->transaction_status !== 'SUCCESS')
+                                                <a href="{{ route('transaction.edit', $item->id) }}" class="btn-sm btn btn-warning">
+                                                    Update
+                                                </a>
+
+                                            @endif
                                             <form action="{{ route('transaction.destroy', $item->id) }}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
