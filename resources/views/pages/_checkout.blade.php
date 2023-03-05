@@ -223,7 +223,7 @@
                             >
                         </div>
                         <div class="text-center mt-3">
-                            <a href="#" class="text-muted">Cancel Booking</a>
+                            <a href="{{ route('checkout-remove', $item->id) }}" class="text-muted">Cancel Booking</a>
                         </div>
                     </div>
                 </div>
