@@ -56,12 +56,13 @@ class CheckoutController extends Controller
         }
 
         $transaction->transaction_total -= $transaction->travel_package->price;
+        $transaction->transaction_status = 'CANCELLED';
 
         $transaction->save();
 
         $item->delete();
 
-        return redirect()->route('checkout', $item->transactions_id);
+        return redirect()->route('detail', $transaction->travel_package->slug);
     }
 
     public function create(Request $request, $id)
