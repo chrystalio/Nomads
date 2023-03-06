@@ -49,7 +49,7 @@
                                             <a href="{{ route('transaction.show', $item->id) }}" class="btn-sm btn btn-primary">
                                                 Show
                                             </a>
-                                            @if($item->transaction_status !== 'SUCCESS')
+                                            @if($item->transaction_status !== 'SUCCESS' && $item->transaction_status !== 'CANCELLED')
                                                 <a href="{{ route('transaction.edit', $item->id) }}" class="btn-sm btn btn-warning">
                                                     Update
                                                 </a>
