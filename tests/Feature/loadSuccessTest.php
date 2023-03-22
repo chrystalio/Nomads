@@ -11,25 +11,33 @@ class loadSuccessTest extends TestCase
      * @return void
      */
 
-    public function testCheckoutPageLoads()
+    public function testRegisterPageLoads()
     {
-        $response = $this->get('/checkout');
+        $response = $this->get('/register');
 
         $response->assertStatus(200);
-        $response->assertSee('Checkout');
+        $response->assertSee('Register');
     }
 
-    public function testCheckoutSuccessPageLoads()
+    public function testLoginPageLoads()
     {
-        $response = $this->get('/checkout/status');
+        $response = $this->get('/login');
 
         $response->assertStatus(200);
-        $response->assertSee('Checkout Success');
+        $response->assertSee('Login');
+    }
+
+    public function testHomePageLoads()
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+        $response->assertSee('Home');
     }
 
     public function testDetailPageLoads()
     {
-        $response = $this->get('/detail');
+        $response = $this->get('/detail/{slug}');
 
         $response->assertStatus(200);
         $response->assertSee('Detail');
