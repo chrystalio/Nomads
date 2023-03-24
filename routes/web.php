@@ -52,6 +52,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'isAdmin']], sta
     Route::resource('gallery', GalleryController::class);
     Route::resource('transaction', TransactionController::class);
 });
-
+Route::post('/transaction/success', [TransactionController::class, 'handleTransactionSuccess'])->name('transaction.success');
 
 Auth::routes(['verify' => 'true']);
