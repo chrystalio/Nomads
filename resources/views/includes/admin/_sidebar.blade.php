@@ -23,15 +23,14 @@
                 <li class="sidebar-title">Menu</li>
 
                 <li
-                    class="sidebar-item active ">
+                    class="sidebar-item {{ request()->routeIs('dashboard') ? 'active' : ' '}}">
                     <a href="{{route('dashboard')}}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-
                 <li
-                    class="sidebar-item">
+                    class="sidebar-item {{ request()->routeIs('travel-package.*') ? 'active' : ' '}}">
                     <a href="{{route('travel-package.index')}}" class='sidebar-link'>
                         <i class="bi bi-calendar-date-fill"></i>
                         <span>Travel Package</span>
@@ -39,14 +38,14 @@
                 </li>
 
                 <li
-                    class="sidebar-item">
+                    class="sidebar-item {{ request()->routeIs('gallery.*') ? 'active' : ' '}}">
                     <a href="{{route('gallery.index')}}" class='sidebar-link'>
                         <i class="bi bi-card-image"></i>
                         <span>Gallery Travel</span>
                     </a>
                 </li>
                 <li
-                    class="sidebar-item">
+                    class="sidebar-item {{ request()->routeIs('transaction.*') ? 'active' : ' '}}">
                     <a href="{{route('transaction.index')}}" class='sidebar-link'>
                         <i class="bi bi-cart-check-fill"></i>
                         <span>Transactions</span>
