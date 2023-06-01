@@ -9,10 +9,13 @@ return new class extends Migration {
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('travel_packages_id')->constrained('travel_packages');
+            $table->uuid('travel_packages_uuid');
             $table->text('image');
             $table->softDeletes();
             $table->timestamps();
+
+
+            $table->foreign('travel_packages_uuid')->references('uuid')->on('travel_packages')->onDelete('cascade');
         });
     }
 
