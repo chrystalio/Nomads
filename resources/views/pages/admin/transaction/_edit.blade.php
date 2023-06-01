@@ -28,7 +28,7 @@
                                                         </ul>
                                                     </div>
                                                 @endif
-                                                <form action="{{route('transaction.update', $item->id)}}" method="post" enctype="multipart/form-data">
+                                                <form action="{{route('transaction.update', $item->uuid)}}" method="post" enctype="multipart/form-data">
                                                     @method('PUT')
                                                     @csrf
                                                     <div class="row">

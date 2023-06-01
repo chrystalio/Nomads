@@ -33,11 +33,11 @@
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <div class="form-group">
-                                                                <label for="travel_packages_id">Travel Package</label>
-                                                                <select name="travel_packages_id" id="travel_packages_id" class="form-control">
+                                                                <label for="travel_packages_uuid">Travel Package</label>
+                                                                <select name="travel_packages_uuid" id="travel_packages_uuid" class="form-control">
                                                                     <option value="">Select Travel Package</option>
                                                                     @foreach($travel_packages as $travel_package)
-                                                                        <option value="{{$travel_package->id}}">{{$travel_package->title}}</option>
+                                                                        <option value="{{$travel_package->uuid}}">{{$travel_package->title}}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>

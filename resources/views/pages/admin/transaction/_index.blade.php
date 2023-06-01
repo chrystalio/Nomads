@@ -46,16 +46,16 @@
                                             <td class="text-bg-danger">{{$item->transaction_status }}</td>
                                         @endif
                                         <td>
-                                            <a href="{{ route('transaction.show', $item->id) }}" class="btn-sm btn btn-primary">
+                                            <a href="{{ route('transaction.show', $item->uuid) }}" class="btn-sm btn btn-primary">
                                                 Show
                                             </a>
                                             @if($item->transaction_status !== 'SUCCESS' && $item->transaction_status !== 'CANCELLED')
-                                                <a href="{{ route('transaction.edit', $item->id) }}" class="btn-sm btn btn-warning">
+                                                <a href="{{ route('transaction.edit', $item->uuid) }}" class="btn-sm btn btn-warning">
                                                     Update
                                                 </a>
 
                                             @endif
-                                            <form action="{{ route('transaction.destroy', $item->id) }}" method="post" class="d-inline">
+                                            <form action="{{ route('transaction.destroy', $item->uuid) }}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button class="btn-sm btn btn-danger">

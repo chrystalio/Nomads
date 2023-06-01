@@ -35,9 +35,9 @@
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <div class="form-group">
-                                                                <label for="travel_packages_id">Travel Package</label>
-                                                                <select name="travel_packages_id" id="travel_packages_id" class="form-control">
-                                                                    <option value="{{$item->travel_packages_id}}">{{$item->travel_package->title}}</option>
+                                                                <label for="travel_packages_uuid">Travel Package</label>
+                                                                <select name="travel_packages_uuid" id="travel_packages_uuid" class="form-control">
+                                                                    <option value="{{$item->travel_packages_uuid}}">{{$item->travel_package->title}}</option>
                                                                 </select>
                                                             </div>
                                                         </div>
