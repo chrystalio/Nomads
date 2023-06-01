@@ -45,8 +45,8 @@
                                         <td>{{$item->duration}}</td>
                                         <td>Rp{{number_format($item->price)}}</td>
                                         <td>
-                                            <a href="{{route('travel-package.edit', $item->id)}}" class="btn btn-sm btn-outline-warning">Edit</a>
-                                            <form action="{{route('travel-package.destroy', $item->id)}}" method="post" class="d-inline">
+                                            <a href="{{route('travel-package.edit', $item->uuid)}}" class="btn btn-sm btn-outline-warning">Edit</a>
+                                            <form action="{{route('travel-package.destroy', $item->uuid)}}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-sm btn-outline-danger">Delete</button>
