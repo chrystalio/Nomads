@@ -25,19 +25,19 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/detail/{slug}', [DetailController::class, 'index'])->name('detail');
 
 Route::controller(CheckoutController::class)->group(function () {
-    Route::post('/checkout/{id}', [CheckoutController::class, 'process'])
+    Route::post('/checkout/{uuid}', [CheckoutController::class, 'process'])
         ->name('checkout-process')
         ->middleware(['auth', 'verified']);
-    Route::get('/checkout/{id}', [CheckoutController::class, 'index'])
+    Route::get('/checkout/{uuid}', [CheckoutController::class, 'index'])
         ->name('checkout')
         ->middleware(['auth', 'verified']);
-    Route::get('/checkout/remove/{detail_id}', [CheckoutController::class, 'remove'])
+    Route::get('/checkout/remove/{detail_uuid}', [CheckoutController::class, 'remove'])
         ->name('checkout-remove')
         ->middleware(['auth', 'verified']);
-    Route::post('/checkout/create/{detail_id}', [CheckoutController::class, 'create'])
+    Route::post('/checkout/create/{detail_uuid}', [CheckoutController::class, 'create'])
         ->name('checkout-create')
         ->middleware(['auth', 'verified']);
-    Route::get('/checkout/confirm/{id}', [CheckoutController::class, 'success'])
+    Route::get('/checkout/confirm/{uuid}', [CheckoutController::class, 'success'])
         ->name('checkout-success')
         ->middleware(['auth', 'verified']);
 });
