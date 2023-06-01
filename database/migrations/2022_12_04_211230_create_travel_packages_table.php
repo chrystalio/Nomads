@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('travel_packages', function (Blueprint $table) {
             $table->id();
+            $table->uuid()->unique();
             $table->string('title');
             $table->string('slug');
             $table->string('location');
