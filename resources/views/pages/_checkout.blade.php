@@ -67,7 +67,7 @@
                                             <td class="align-middle">{{$detail->is_visa ? '30 Days' : 'N/A'}}</td>
                                             <td class="align-middle">{{\Carbon\Carbon::createFromDate($detail->doe_passport) > \Carbon\Carbon::now() ? 'Active' : 'Inactive'}}</td>
                                             <td class="align-middle">
-                                                <a href="{{ route('checkout-remove', $detail->id) }}">
+                                                <a href="{{ route('checkout-remove', $detail->uuid) }}">
                                                     <img src="{{ url('frontend/images/ic_remove.png') }}" alt=""/>
                                                 </a>
                                             </td>
@@ -85,7 +85,7 @@
                             <div class="member mt-3">
                                 <h2>Add Member</h2>
                                 <form class="form-inline" method="post"
-                                      action="{{ route('checkout-create', $item->id) }}">
+                                      action="{{ route('checkout-create', $item->uuid) }}">
                                     @csrf
                                     <label class="sr-only" for="username">Name</label>
                                     <input
@@ -217,13 +217,13 @@
                         </div>
                         <div class="join-container">
                             <a
-                                href="{{ route('checkout-success', $item->id) }}"
+                                href="{{ route('checkout-success', $item->uuid) }}"
                                 class="btn btn-block btn-join-now mt-3 py-2"
                             >I Have Made Payment</a
                             >
                         </div>
                         <div class="text-center mt-3">
-                            <a href="{{ route('checkout-remove', $item->id) }}" class="text-muted">Cancel Booking</a>
+                            <a href="{{ route('checkout-remove', $item->uuid) }}" class="text-muted">Cancel Booking</a>
                         </div>
                     </div>
                 </div>
