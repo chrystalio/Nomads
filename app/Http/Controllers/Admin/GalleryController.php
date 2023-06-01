@@ -54,23 +54,23 @@ class GalleryController extends Controller
         return redirect()->route('gallery.index');
     }
 
-    public function show($id)
+    public function show($uuid)
     {
     }
 
-    public function edit($id)
+    public function edit($uuid)
     {
-        $item = Gallery::findOrFail($id);
+        $item = Gallery::findOrFail($uuid);
 
         return view('pages.admin.gallery._edit', [
             'item' => $item,
         ]);
     }
 
-    public function update(GalleryRequest $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(GalleryRequest $request, $uuid): \Illuminate\Http\RedirectResponse
     {
         $data = $request->all();
-        $item = Gallery::findOrFail($id);
+        $item = Gallery::findOrFail($uuid);
 
         if ($request->has('image')) {
             // Unlink old image
@@ -95,9 +95,9 @@ class GalleryController extends Controller
         return redirect()->route('gallery.index');
     }
 
-    public function destroy($id)
+    public function destroy($uuid)
     {
-        $item = Gallery::findOrFail($id);
+        $item = Gallery::findOrFail($uuid);
 
         DB::beginTransaction();
         try {

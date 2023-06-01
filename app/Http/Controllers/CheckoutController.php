@@ -12,20 +12,20 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
-    public function index(Request $request, $id)
+    public function index(Request $request, $uuid)
     {
-        $item = Transaction::with(['details', 'travel_package', 'user'])->findOrFail($id);
+        $item = Transaction::with(['details', 'travel_package', 'user'])->findOrFail($uuid);
         return view('pages._checkout', [
             'item' => $item
         ]);
     }
 
-    public function process(Request $request, $id)
+    public function process(Request $request, $uuid)
     {
-        $travel_package = TravelPackage::findOrFail($id);
+        $travel_package = TravelPackage::findOrFail($uuid);
 
         $transaction = Transaction::create([
-            'travel_packages_id' => $id,
+            'travel_packages_uuid' => $uuid,
             'users_id' => Auth::user()->id,
             'additional_visa' => 0,
             'transaction_total' => $travel_package->price,
@@ -33,7 +33,7 @@ class CheckoutController extends Controller
         ]);
 
         $transaction_detail = TransactionDetail::create([
-            'transactions_id' => $transaction->id,
+            'transactions_uuid' => $transaction->uuid,
             'users_id' => Auth::user()->id,
             'username' => Auth::user()->username,
             'nationality' => 'Indonesia',
@@ -42,13 +42,13 @@ class CheckoutController extends Controller
         ]);
         $transaction->save();
 
-        return redirect()->route('checkout', $transaction->id);
+        return redirect()->route('checkout', $transaction->uuid);
     }
 
     public function remove(Request $request, $detail_id)
     {
         $item = TransactionDetail::findOrFail($detail_id);
-        $transaction = Transaction::with(['details', 'travel_package'])->findOrFail($item->transactions_id);
+        $transaction = Transaction::with(['details', 'travel_package'])->findOrFail($item->transaction_uuid);
 
         if ($request->is_visa) {
             $transaction->transaction_total -= 190;
@@ -65,7 +65,7 @@ class CheckoutController extends Controller
         return redirect()->route('detail', $transaction->travel_package->slug);
     }
 
-    public function create(Request $request, $id)
+    public function create(Request $request, $uuid)
     {
         $request->validate([
             'username' => 'required|string|exists:users,username',
@@ -74,11 +74,11 @@ class CheckoutController extends Controller
         ]);
 
         $data = $request->all();
-        $data['transactions_id'] = $id;
+        $data['transactions_id'] = $uuid;
 
         TransactionDetail::create($data);
 
-        $transaction = Transaction::with(['travel_package'])->findOrFail($id);
+        $transaction = Transaction::with(['travel_package'])->findOrFail($uuid);
 
         if ($request->is_visa) {
             $transaction->transaction_total += 190;
@@ -89,12 +89,12 @@ class CheckoutController extends Controller
 
         $transaction->save();
 
-        return redirect()->route('checkout', $id);
+        return redirect()->route('checkout', $uuid);
     }
 
-    public function success(Request $request, $id)
+    public function success(Request $request, $uuid)
     {
-        $transaction = Transaction::findOrFail($id);
+        $transaction = Transaction::findOrFail($uuid);
         $transaction->transaction_status = 'PENDING';
 
         $transaction->save();

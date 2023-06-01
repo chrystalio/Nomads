@@ -30,18 +30,18 @@ class TransactionController extends Controller
     {
     }
 
-    public function show($id)
+    public function show($uuid)
     {
-        $item = Transaction::with(['details', 'travel_package', 'user'])->findOrFail($id);
+        $item = Transaction::with(['details', 'travel_package', 'user'])->findOrFail($uuid);
 
         return view('pages.admin.transaction._detail',[
             'item' => $item,
         ]);
     }
 
-    public function edit($id)
+    public function edit($uuid)
     {
-        $item = Transaction::with(['details', 'travel_package', 'user'])->findOrFail($id);
+        $item = Transaction::with(['details', 'travel_package', 'user'])->findOrFail($uuid);
 
         return view('pages.admin.transaction._edit',[
             'item' => $item,
@@ -51,11 +51,11 @@ class TransactionController extends Controller
     /**
      * @throws \JsonException
      */
-    public function update(TransactionRequest $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(TransactionRequest $request, $uuid): \Illuminate\Http\RedirectResponse
     {
         $data = $request->all();
 
-        $item = Transaction::findOrFail($id);
+        $item = Transaction::findOrFail($uuid);
 
         DB::beginTransaction();
         try {
@@ -69,14 +69,14 @@ class TransactionController extends Controller
         // Add alert message here using Prologue Alerts
         Alert::success('Status has been updated successfully')->flash();
 
-        $this->handleTransactionSuccess($request, $id);
+        $this->handleTransactionSuccess($request, $uuid);
 
         return redirect()->route('transaction.index');
     }
 
-    public function destroy($id)
+    public function destroy($uuid)
     {
-        $item = Transaction::findOrFail($id);
+        $item = Transaction::findOrFail($uuid);
 
         DB::beginTransaction();
         try {
