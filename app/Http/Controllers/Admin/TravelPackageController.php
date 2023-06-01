@@ -45,29 +45,27 @@ class TravelPackageController extends Controller
 
         return redirect()->route('travel-package.index');
 
-
-
     }
 
-    public function show($id)
+    public function show($uuid)
     {
     }
 
-    public function edit($id)
+    public function edit($uuid)
     {
-        $item = TravelPackage::findOrFail($id);
+        $item = TravelPackage::findOrFail($uuid);
 
         return view('pages.admin.travel-package._edit', [
             'item' => $item,
         ]);
     }
 
-    public function update(TravelPackageRequest $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(TravelPackageRequest $request, $uuid): \Illuminate\Http\RedirectResponse
     {
         $data = $request->all();
         $data['slug'] = Str::slug($request->title);
 
-        $item = TravelPackage::findOrFail($id);
+        $item = TravelPackage::findOrFail($uuid);
 
         DB::beginTransaction();
         try {
@@ -84,9 +82,9 @@ class TravelPackageController extends Controller
         return redirect()->route('travel-package.index');
     }
 
-    public function destroy($id)
+    public function destroy($uuid)
     {
-        $item = TravelPackage::findOrFail($id);
+        $item = TravelPackage::findOrFail($uuid);
 
         DB::beginTransaction();
         try {
