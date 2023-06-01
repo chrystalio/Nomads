@@ -2,15 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TransactionDetail extends Model
 {
     use SoftDeletes;
+    use HasUuids;
+
+    protected $primaryKey = 'uuid';
 
     protected $fillable = [
-        'transactions_id',
+        'uuid',
+        'transactions_uuid',
         'username',
         'nationality',
         'is_visa',
@@ -26,6 +31,6 @@ class TransactionDetail extends Model
 
     public function transaction()
     {
-        return $this->belongsTo(Transaction::class, 'travel_packages_id', 'id');
+        return $this->belongsTo(Transaction::class, 'travel_packages_uuid', 'uuid');
     }
 }

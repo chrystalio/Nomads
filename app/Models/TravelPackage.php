@@ -37,8 +37,8 @@ class TravelPackage extends Model
         'deleted_at',
     ];
 
-    public function galleries()
+    public function galleries(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Gallery::class, 'travel_packages_id', 'id');
+        return $this->hasMany(Gallery::class, 'travel_packages_uuid', 'uuid');
     }
 }
