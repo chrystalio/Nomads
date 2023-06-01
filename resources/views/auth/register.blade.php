@@ -47,7 +47,7 @@
                     <div class=" col checkbox mb-3">
                         <button class="w-100 btn btn-lg btn-login my-2" type="submit">Register</button>
                         <p class="text-muted">
-                            Don't have an account? <a href="{{ route('register') }}">Login</a>
+                            Don't have an account? <a href="{{ route('login') }}">Login</a>
                         </p>
                     </div>
                 </form>
