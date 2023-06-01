@@ -28,7 +28,7 @@
                                                         </ul>
                                                     </div>
                                                 @endif
-                                                <form action="{{route('travel-package.update', $item->id)}}"
+                                                <form action="{{route('travel-package.update', $item->uuid)}}"
                                                       method="post" enctype="multipart/form-data">
                                                     @method('PUT')
                                                     @csrf
@@ -131,7 +131,7 @@
                                                             </button>
                                                         </div>
                                                     </div>
-                                                </form>
+                                                </form>280029
                                             </div>
                                         </div>
                                     </div>
