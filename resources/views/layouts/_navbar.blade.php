@@ -1,7 +1,7 @@
 <div class="container">
     <nav class="row navbar navbar-expand-lg navbar-light bg-white">
         <a class="navbar-brand" href="#">
-            <img src="{{url('frontend/images/logo@2x.png')}}" alt="Nomads Logo"/>
+            <img src="{{url('frontend/images/new_logo.png')}}" alt="Nomads Logo"/>
         </a>
         <button
             class="navbar-toggler navbar-toggler-right"
