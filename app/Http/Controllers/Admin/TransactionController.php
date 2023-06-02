@@ -96,9 +96,9 @@ class TransactionController extends Controller
     /**
      * @throws \JsonException
      */
-    public function handleTransactionSuccess(Request $request, $transactionId)
+    public function handleTransactionSuccess(Request $request, $transactionUuid)
     {
-        $transaction = Transaction::where('id', $transactionId)->firstOrFail();
+        $transaction = Transaction::where('uuid', $transactionUuid)->firstOrFail();
 
         if($transaction->transaction_status === 'SUCCESS') {
             $travel_package = $transaction->travel_package;
