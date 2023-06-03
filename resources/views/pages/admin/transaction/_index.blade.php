@@ -34,10 +34,10 @@
                                 @forelse($items as $item)
                                     <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
-                                        <td>{{$item->travel_package->title}}</td>
-                                        <td>{{$item->user->name}}</td>
-                                        <td>{{$item->additional_visa}}</td>
-                                        <td>Rp{{number_format($item->transaction_total)}}</td>
+                                        <td>{{$item->travel_package->title ?? '-'}}</td>
+                                        <td>{{$item->user->name ?? '-'}}</td>
+                                        <td>{{$item->additional_visa ?? '-'}}</td>
+                                        <td>Rp{{number_format($item->transaction_total ?? '-')}}</td>
                                         @if($item->transaction_status === 'SUCCESS')
                                             <td class="text-bg-success">{{$item->transaction_status }}</td>
                                         @elseif($item->transaction_status === 'PENDING')
