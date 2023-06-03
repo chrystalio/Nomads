@@ -11,6 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->uuid()->unique();
             $table->uuid('travel_packages_uuid');
+            $table->string('bookingId');
             $table->foreignId('users_id')->constrained('users');
             $table->integer('additional_visa');
             $table->integer('transaction_total');
