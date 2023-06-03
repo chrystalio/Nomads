@@ -9,6 +9,7 @@ use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CheckoutController extends Controller
 {
@@ -22,10 +23,15 @@ class CheckoutController extends Controller
 
     public function process(Request $request, $uuid)
     {
+        $prefix = '#NM-';
+        $dateComponent = Carbon::now()->format('ymd');
+        $randomComponent = Str::upper(Str::random(4));
+
         $travel_package = TravelPackage::findOrFail($uuid);
 
         $transaction = Transaction::create([
             'travel_packages_uuid' => $uuid,
+            'bookingId' => $prefix . $dateComponent . $randomComponent,
             'users_id' => Auth::user()->id,
             'additional_visa' => 0,
             'transaction_total' => $travel_package->price,
@@ -40,6 +46,7 @@ class CheckoutController extends Controller
             'is_visa' => false,
             'doe_passport' => Carbon::create($transaction->user->doe_passport)->format('Y-m-d'),
         ]);
+
         $transaction->save();
 
         return redirect()->route('checkout', $transaction->uuid);
