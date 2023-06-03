@@ -34,11 +34,11 @@
                                 @forelse($items as $item)
                                     <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
-                                        <td>{{$item->travel_package->title}}</td>
+                                        <td>{{$item->travel_package?->title}}</td>
                                         <td>   <img src="{{Storage::url($item->image)}}" alt="" style="width: 150px;" class="img-thumbnail"></td>
                                         <td>
-                                            <a href="{{route('gallery.edit', $item->id)}}" class="btn btn-sm btn-outline-warning">Edit</a>
-                                            <form action="{{route('gallery.destroy', $item->id)}}" method="post" class="d-inline">
+                                            <a href="{{route('gallery.edit', $item->uuid)}}" class="btn btn-sm btn-outline-warning">Edit</a>
+                                            <form action="{{route('gallery.destroy', $item->uuid)}}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-sm btn-outline-danger">Delete</button>
