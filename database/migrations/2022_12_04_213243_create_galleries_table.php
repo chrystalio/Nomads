@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
+            $table->uuid()->unique();
             $table->uuid('travel_packages_uuid');
             $table->text('image');
             $table->softDeletes();
