@@ -31,6 +31,10 @@
                                                         @endif
                                                     </tr>
                                                     <tr>
+                                                        <th>Booking ID</th>
+                                                        <td>{{$item->bookingId}}</td>
+                                                    </tr>
+                                                    <tr>
                                                         <th>Travel Package</th>
                                                         <td>{{$item->travel_package->title}}</td>
                                                     </tr>

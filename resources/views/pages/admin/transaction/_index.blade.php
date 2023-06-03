@@ -22,6 +22,7 @@
                                 <thead class="text-center">
                                 <tr>
                                     <th scope="col">No</th>
+                                    <th scope="col">Invoice No</th>
                                     <th scope="col">Travel</th>
                                     <th scope="col">User</th>
                                     <th scope="col">Additional Visa</th>
@@ -34,6 +35,7 @@
                                 @forelse($items as $item)
                                     <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
+                                        <td>{{ $item->bookingId }}</td>
                                         <td>{{$item->travel_package->title ?? '-'}}</td>
                                         <td>{{$item->user->name ?? '-'}}</td>
                                         <td>{{$item->additional_visa ?? '-'}}</td>
