@@ -10,6 +10,8 @@ use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Midtrans\Config;
+use Midtrans\Snap;
 
 class CheckoutController extends Controller
 {
@@ -105,6 +107,38 @@ class CheckoutController extends Controller
         $transaction->transaction_status = 'PENDING';
 
         $transaction->save();
-        return view('pages._success');
+
+        // Set Midtrans Configuration
+        Config::$serverKey = config('midtrans.serverKey');
+        Config::$isProduction = config('midtrans.isProduction');
+        Config::$isSanitized = config('midtrans.isSanitized');
+        Config::$is3ds = config('midtrans.is3ds');
+
+        // Create array for passing to Midtrans
+        $midtrans_params = [
+            'transaction_details' => [
+                'order_id' => 'MIDTRANS-' . $transaction->bookingId,
+                'gross_amount' => (int) $transaction->transaction_total,
+            ],
+            'customer_details' => [
+                'first_name' => $transaction->user->name,
+                'email' => $transaction->user->email,
+            ],
+            'enabled_payments' => [
+                'gopay', 'bank_transfer'
+            ],
+            'vtweb' => []
+        ];
+
+        try {
+            // Get Snap Payment Page URL
+            $paymentUrl = Snap::createTransaction($midtrans_params)->redirect_url;
+            // Redirect to Snap Payment Page
+            header('Location: ' . $paymentUrl);
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+
+//        return view('pages._success');
     }
 }
